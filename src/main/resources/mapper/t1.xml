@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.khy1.lol_pro.dao.MemberDao">
+    <select id="getMember" resultType="com.khy1.lol_pro.model.MemberModel">
+--         SELECT * FROM t1
+            SELECT * FROM lol.${team}
+    </select>
+
+<!--    t1 테이블의 VALUES들을 insert 하는 코드-->
+<!--    <insert id="setMember" parameterType="com.khy1.lol_pro.model.MemberModel">-->
+<!--        INSERT INTO lol.t1 VALUES (#{id}, #{name}, #{nickname}, #{position})-->
+<!--    </insert>-->
+<!--    테이블을 선택하여 해당 테이블에 VALUES들을 insert 하는 코드-->
+    <insert id="setMember" parameterType="com.khy1.lol_pro.model.MemberModel">
+        INSERT INTO lol.${team} VALUES (#{id}, #{name}, #{nickname}, #{position})
+    </insert>
+</mapper>
